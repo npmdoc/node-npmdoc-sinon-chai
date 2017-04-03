@@ -1,17 +1,40 @@
 {
-    "buildNpmdoc":"sinon-chai",
+    "author": "kai zhu <kaizhu256@gmail.com>",
+    "buildNpmdoc": "sinon-chai",
+    "description": "api documentation for [sinon-chai (v2.9.0)](https://github.com/domenic/sinon-chai#readme) [![npm package](https://img.shields.io/npm/v/npmdoc-sinon-chai.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-sinon-chai) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-sinon-chai.svg)](https://travis-ci.org/npmdoc/node-npmdoc-sinon-chai)",
     "devDependencies": {
-        "sinon-chai": "*",
         "electron-lite": "kaizhu256/node-electron-lite#alpha",
+        "sinon-chai": "*",
         "utility2": "kaizhu256/node-utility2#alpha"
     },
-    "name":"npmdoc-sinon-chai",
+    "engines": {
+        "node": ">=4.0"
+    },
+    "homepage": "https://github.com/npmdoc/node-npmdoc-sinon-chai",
+    "keywords": [
+        "documentation",
+        "sinon-chai"
+    ],
+    "license": "MIT",
+    "main": "lib.npmdoc_sinon_chai.js",
+    "name": "npmdoc-sinon-chai",
+    "nameAlias": "npmdoc_sinon_chai",
+    "nameOriginal": "npmdoc-sinon-chai",
+    "os": [
+        "darwin",
+        "linux"
+    ],
     "repository": {
         "type": "git",
         "url": "https://github.com/npmdoc/node-npmdoc-sinon-chai.git"
     },
     "scripts": {
-        "build-ci": "utility2 shReadmeTest build_ci.sh"
+        "build-ci": "utility2 shReadmeTest build_ci.sh",
+        "env": "env",
+        "heroku-postbuild": "(set -e; npm install \"kaizhu256/node-utility2#alpha\"; utility2 shDeployHeroku)",
+        "postinstall": "if [ -f npm_scripts.sh ]; then ./npm_scripts.sh postinstall; fi",
+        "start": "(set -e; export PORT=${PORT:-8080}; utility2 start test.js)",
+        "test": "(set -e; export PORT=$(utility2 shServerPortRandom); utility2 test test.js)"
     },
     "version": "0.0.1"
 }
