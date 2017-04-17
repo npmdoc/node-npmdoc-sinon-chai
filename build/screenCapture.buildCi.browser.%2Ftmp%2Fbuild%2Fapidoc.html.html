@@ -1,4 +1,4 @@
-<div class="apidocDiv">
+<html><head></head><body><div class="apidocDiv">
 <style>
 /*csslint
 */
@@ -47,17 +47,10 @@
 }
 </style>
 <h1>api documentation for
-    <a
-
-        href="https://github.com/domenic/sinon-chai#readme"
-
-    >sinon-chai (v2.9.0)</a>
+    <a href="https://github.com/domenic/sinon-chai#readme">sinon-chai (v2.9.0)</a>
 </h1>
 <h4>Extends Chai with assertions for the Sinon.JS mocking framework.</h4>
-<div class="apidocSectionDiv"><a
-    href="#apidoc.tableOfContents"
-    id="apidoc.tableOfContents"
-><h1>table of contents</h1></a><ol>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
 
     <li class="apidocModuleLi"><a href="#apidoc.module.sinon-chai">module sinon-chai</a><ol>
 
@@ -117,36 +110,36 @@
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function sinonChai(chai, utils) {
-    &#x22;use strict&#x22;;
+    "use strict";
 
     var slice = Array.prototype.slice;
 
     function isSpy(putativeSpy) {
-        return typeof putativeSpy === &#x22;function&#x22; &#x26;&#x26;
-               typeof putativeSpy.getCall === &#x22;function&#x22; &#x26;&#x26;
-               typeof putativeSpy.calledWithExactly === &#x22;function&#x22;;
+        return typeof putativeSpy === "function" &amp;&amp;
+               typeof putativeSpy.getCall === "function" &amp;&amp;
+               typeof putativeSpy.calledWithExactly === "function";
     }
 
     function timesInWords(count) {
-        return count === 1 ? &#x22;once&#x22; :
-               count === 2 ? &#x22;twice&#x22; :
-               count === 3 ? &#x22;thrice&#x22; :
-               (count || 0) + &#x22; times&#x22;;
+        return count === 1 ? "once" :
+               count === 2 ? "twice" :
+               count === 3 ? "thrice" :
+               (count || 0) + " times";
     }
 
     function isCall(putativeCall) {
-        return putativeCall &#x26;&#x26; isSpy(putativeCall.proxy);
+        return putativeCall &amp;&amp; isSpy(putativeCall.proxy);
     }
 
     function assertCanWorkWith(assertion) {
-        if (!isSpy(assertion._obj) &#x26;&#x26; !isCall(assertion._obj)) {
-            throw new TypeError(utils.inspect(assertion._obj) + &#x22; is not a spy or a call to a spy!&#x22;);
+        if (!isSpy(assertion._obj) &amp;&amp; !isCall(assertion._obj)) {
+            throw new TypeError(utils.inspect(assertion._obj) + " is not a spy or a call to a spy!");
         }
     }
 
     function getMessages(spy, action, nonNegatedSuffix, always, args) {
-        var verbPhrase = always ? &#x22;always have &#x22; : &#x22;have &#x22;;
-        nonNegatedSuffix = nonNegatedSuffix || &#x22;&#x22;;
+        var verbPhrase = always ? "always have " : "have ";
+        nonNegatedSuffix = nonNegatedSuffix || "";
         if (isSpy(spy.proxy)) {
             spy = spy.proxy;
         }
@@ -157,10 +150,10 @@
 
         return {
             affirmative: function () {
-                return printfArray([&#x22;expected %n to &#x22; + verbPhrase + action + nonNegatedSuffix].concat(args));
+                return printfArray(["expected %n to " + verbPhrase + action + nonNegatedSuffix].concat(args));
             },
             negative: function () {
-                return printfArray([&#x22;expected %n to not &#x22; + verbPhrase + action].concat(args));
+                return printfArray(["expected %n to not " + verbPhrase + action].concat(args));
             }
         };
     }
@@ -187,8 +180,8 @@
         return function () {
             assertCanWorkWith(this);
 
-            var alwaysSinonMethod = &#x22;always&#x22; + sinonName[0].toUpperCase() + sinonName.substring(1);
-            var shouldBeAlways = utils.flag(this, &#x22;always&#x22;) &#x26;&#x26; typeof this._obj[alwaysSinonMethod] === &#x22;function&#x22;;
+            var alwaysSinonMethod = "always" + sinonName[0].toUpperCase() + sinonName.substring(1);
+            var shouldBeAlways = utils.flag(this, "always") &amp;&amp; typeof this._obj[alwaysSinonMethod] === "function";
             var sinonMethod = shouldBeAlways ? alwaysSinonMethod : sinonName;
 
             var messages = getMessages(this._obj, action, nonNegatedSuffix, shouldBeAlways, slice.call(arguments));
@@ -210,14 +203,14 @@
         exceptionalSinonMethod(name, name, action, nonNegatedSuffix);
     }
 
-    utils.addProperty(chai.Assertion.prototype, &#x22;always&#x22;, function () {
-        utils.flag(this, &#x22;always&#x22;, true);
+    utils.addProperty(chai.Assertion.prototype, "always", function () {
+        utils.flag(this, "always", true);
     });
 
-    sinonProperty(&#x22;called&#x22;, &#x22;been called&#x22;, &#x22; at least once, but it was never called&#x22;);
-    sinonPropertyAsBooleanMethod(&#x22;callCount&#x22;, &#x22;been called exactly %1&#x22;, &#x22;, but it was called %c%C&#x22;);
-    sinonProperty(&#x22;calledOnce&#x22;, &#x22;been called exactly once&#x22;, &#x22;, but it was called %c%C&#x22;);
-    sinonProperty(&#x22;calledTwice&#x22;, &#x22;been called exactly twice&#x22;, &#x22;, but it was called %c%C&#x22;);
+    sinonProperty("called", "been called", " at least once, but it was never called");
+    sinonPropertyAsBooleanMethod("callCount", "been called exactly %1", ", but it was called %c%C");
+    sinonProperty("calledOnce", "been called exactly once", ", but it was called %c%C");
+    sinonProperty("calledTwice", "been called exactly twice", ", but it was called %c%C");
     sino ...</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -232,36 +225,36 @@
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function sinonChai(chai, utils) {
-    &#x22;use strict&#x22;;
+    "use strict";
 
     var slice = Array.prototype.slice;
 
     function isSpy(putativeSpy) {
-        return typeof putativeSpy === &#x22;function&#x22; &#x26;&#x26;
-               typeof putativeSpy.getCall === &#x22;function&#x22; &#x26;&#x26;
-               typeof putativeSpy.calledWithExactly === &#x22;function&#x22;;
+        return typeof putativeSpy === "function" &amp;&amp;
+               typeof putativeSpy.getCall === "function" &amp;&amp;
+               typeof putativeSpy.calledWithExactly === "function";
     }
 
     function timesInWords(count) {
-        return count === 1 ? &#x22;once&#x22; :
-               count === 2 ? &#x22;twice&#x22; :
-               count === 3 ? &#x22;thrice&#x22; :
-               (count || 0) + &#x22; times&#x22;;
+        return count === 1 ? "once" :
+               count === 2 ? "twice" :
+               count === 3 ? "thrice" :
+               (count || 0) + " times";
     }
 
     function isCall(putativeCall) {
-        return putativeCall &#x26;&#x26; isSpy(putativeCall.proxy);
+        return putativeCall &amp;&amp; isSpy(putativeCall.proxy);
     }
 
     function assertCanWorkWith(assertion) {
-        if (!isSpy(assertion._obj) &#x26;&#x26; !isCall(assertion._obj)) {
-            throw new TypeError(utils.inspect(assertion._obj) + &#x22; is not a spy or a call to a spy!&#x22;);
+        if (!isSpy(assertion._obj) &amp;&amp; !isCall(assertion._obj)) {
+            throw new TypeError(utils.inspect(assertion._obj) + " is not a spy or a call to a spy!");
         }
     }
 
     function getMessages(spy, action, nonNegatedSuffix, always, args) {
-        var verbPhrase = always ? &#x22;always have &#x22; : &#x22;have &#x22;;
-        nonNegatedSuffix = nonNegatedSuffix || &#x22;&#x22;;
+        var verbPhrase = always ? "always have " : "have ";
+        nonNegatedSuffix = nonNegatedSuffix || "";
         if (isSpy(spy.proxy)) {
             spy = spy.proxy;
         }
@@ -272,10 +265,10 @@
 
         return {
             affirmative: function () {
-                return printfArray([&#x22;expected %n to &#x22; + verbPhrase + action + nonNegatedSuffix].concat(args));
+                return printfArray(["expected %n to " + verbPhrase + action + nonNegatedSuffix].concat(args));
             },
             negative: function () {
-                return printfArray([&#x22;expected %n to not &#x22; + verbPhrase + action].concat(args));
+                return printfArray(["expected %n to not " + verbPhrase + action].concat(args));
             }
         };
     }
@@ -302,8 +295,8 @@
         return function () {
             assertCanWorkWith(this);
 
-            var alwaysSinonMethod = &#x22;always&#x22; + sinonName[0].toUpperCase() + sinonName.substring(1);
-            var shouldBeAlways = utils.flag(this, &#x22;always&#x22;) &#x26;&#x26; typeof this._obj[alwaysSinonMethod] === &#x22;function&#x22;;
+            var alwaysSinonMethod = "always" + sinonName[0].toUpperCase() + sinonName.substring(1);
+            var shouldBeAlways = utils.flag(this, "always") &amp;&amp; typeof this._obj[alwaysSinonMethod] === "function";
             var sinonMethod = shouldBeAlways ? alwaysSinonMethod : sinonName;
 
             var messages = getMessages(this._obj, action, nonNegatedSuffix, shouldBeAlways, slice.call(arguments));
@@ -325,14 +318,14 @@
         exceptionalSinonMethod(name, name, action, nonNegatedSuffix);
     }
 
-    utils.addProperty(chai.Assertion.prototype, &#x22;always&#x22;, function () {
-        utils.flag(this, &#x22;always&#x22;, true);
+    utils.addProperty(chai.Assertion.prototype, "always", function () {
+        utils.flag(this, "always", true);
     });
 
-    sinonProperty(&#x22;called&#x22;, &#x22;been called&#x22;, &#x22; at least once, but it was never called&#x22;);
-    sinonPropertyAsBooleanMethod(&#x22;callCount&#x22;, &#x22;been called exactly %1&#x22;, &#x22;, but it was called %c%C&#x22;);
-    sinonProperty(&#x22;calledOnce&#x22;, &#x22;been called exactly once&#x22;, &#x22;, but it was called %c%C&#x22;);
-    sinonProperty(&#x22;calledTwice&#x22;, &#x22;been called exactly twice&#x22;, &#x22;, but it was called %c%C&#x22;);
+    sinonProperty("called", "been called", " at least once, but it was never called");
+    sinonPropertyAsBooleanMethod("callCount", "been called exactly %1", ", but it was called %c%C");
+    sinonProperty("calledOnce", "been called exactly once", ", but it was called %c%C");
+    sinonProperty("calledTwice", "been called exactly twice", ", but it was called %c%C");
     sino ...</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -379,3 +372,4 @@
     ]
 </div>
 </div>
+</body></html>
