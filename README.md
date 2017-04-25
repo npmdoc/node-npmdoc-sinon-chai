@@ -1,4 +1,7 @@
-# api documentation for  [sinon-chai (v2.9.0)](https://github.com/domenic/sinon-chai#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-sinon-chai.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-sinon-chai) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-sinon-chai.svg)](https://travis-ci.org/npmdoc/node-npmdoc-sinon-chai)
+# npmdoc-sinon-chai
+
+#### basic api documentation for  [sinon-chai (v2.9.0)](https://github.com/domenic/sinon-chai#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-sinon-chai.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-sinon-chai) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-sinon-chai.svg)](https://travis-ci.org/npmdoc/node-npmdoc-sinon-chai)
+
 #### Extends Chai with assertions for the Sinon.JS mocking framework.
 
 [![NPM](https://nodei.co/npm/sinon-chai.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/sinon-chai)
@@ -81,7 +84,8 @@
         "test": "mocha",
         "test-travis": "npm install chai@$CHAI_VERSION && npm install sinon@$SINON_VERSION && npm test"
     },
-    "version": "2.9.0"
+    "version": "2.9.0",
+    "bin": {}
 }
 ```
 
